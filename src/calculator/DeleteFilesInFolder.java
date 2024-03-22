@@ -1,3 +1,7 @@
+package calculator;
+
+import com.jim.loganalyzer.common.PropertyLoader;
+
 import java.io.IOException;
 import java.nio.file.FileVisitOption;
 import java.nio.file.FileVisitResult;
@@ -11,12 +15,12 @@ import java.nio.file.attribute.BasicFileAttributes;
 
 public class DeleteFilesInFolder {
     public static void main(String[] args) {
-        String folderPath = "要删除的文件夹路径"; // 请替换为实际的文件夹路径
+//        String folderPath = "要删除的文件夹路径"; // 请替换为实际的文件夹路径
 
         try {
 
-//            String sPropertyFile = args[0];
-            String sPropertyFile = "";
+            String sPropertyFile = args[0];
+//            String sPropertyFile = "";
 
             if(sPropertyFile == null || sPropertyFile.isEmpty() == true){
                 System.err.println(
@@ -25,7 +29,7 @@ public class DeleteFilesInFolder {
             }
             PropertyLoader.propertyFilePath = sPropertyFile;
             System.out.println(sPropertyFile);
-            String folderPath = PropertyLoader.getProperty("folderPath");
+            String folderPath = PropertyLoader.getProperty("folderPathToDelete");
 
             Files.walkFileTree(Paths.get(folderPath), new SimpleFileVisitor<Path>() {
                 @Override
@@ -50,6 +54,8 @@ public class DeleteFilesInFolder {
             System.out.println("Files deleted successfully.");
         } catch (IOException e) {
             e.printStackTrace();
+        } catch (Exception e) {
+            throw new RuntimeException(e);
         }
     }
 }
