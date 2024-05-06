@@ -3,8 +3,6 @@ package calculator;
 import java.util.Scanner;
 import java.util.Stack;
 
-import java.util.Stack;
-
 public class Calculator {
 
     public static double calculate(String expression) {
