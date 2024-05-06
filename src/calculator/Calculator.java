@@ -5,7 +5,7 @@ import java.util.Stack;
 
 public class Calculator {
 
-    public static double calculate(String expression) {
+    private static double calculate(String expression) {
 
         // 計算自然對數
         expression = expression.replaceAll("e", String.valueOf(Math.E));
@@ -80,11 +80,18 @@ public class Calculator {
                 operands.push(a * b);
                 break;
             case '/':
+                if (b == 0) {
+                    throw new ArithmeticException("除數不能為零");
+                }
+
                 operands.push(a / b);
                 break;
             case '^':
                 operands.push(Math.pow(a, b));
                 break;
+
+            default :
+            	throw new ArithmeticException("Wrong inputed operator");
         }
     }
 
