@@ -8,6 +8,14 @@ import java.util.Stack;
 public class Calculator {
 
     public static double calculate(String expression) {
+
+        // 計算自然對數
+        expression = expression.replaceAll("e", String.valueOf(Math.E));
+
+        // 計算π
+        expression = expression.replaceAll("pi", String.valueOf(Math.PI));
+
+
         Stack<Double> operands = new Stack<>();
         Stack<Character> operators = new Stack<>();
 
